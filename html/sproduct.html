@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="single-pro-details">
-            <h6>Home/T-shirt</h6>
+            <!-- <h6>Home/T-shirt</h6> -->
             <h4 id="product-title"></h4>
             <h2 id="product-price"></h2>
             <input type="number" min="1" value="1" /> <br />
@@ -129,93 +129,33 @@
             <p>&copy 2024, Tech2etc - HTML CSS E-commerce Template</p>
         </div>
     </footer>
-    <script type="module">
-        import { products } from '../js/api.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            const productId = getProductIdFromUrl();
-            fetchProductDetails(productId);
-            populateProducts();
-        });
-
-        function populateProducts() {
-            const container = document.getElementById('pro-container');
-            for (const key in products) {
-                if (products.hasOwnProperty(key)) {
-                    const product = products[key];
-                    const productElement = document.createElement('div');
-                    productElement.classList.add('pro');
-                    productElement.id = key;
-                    productElement.innerHTML = `
-                        <a href="sproduct.html?id=${key}">
-                            <img src="${product.image}" alt="${product.title}">
-                            <div class="des">
-                                <span>${product.brand}</span>
-                                <h5>${product.title}</h5>
-                                <div class="star">${generateStars(product.stars)}</div>
-                                <h4>${product.price}</h4>
-                            </div>
-                            <i class="fa-solid fa-cart-shopping cart"></i>
-                        </a>
-                    `;
-                    container.appendChild(productElement);
-                }
-            }
-        }
-
-        function generateStars(starCount) {
-            let stars = '';
-            for (let i = 0; i < starCount; i++) {
-                stars += '<i class="fa-solid fa-star" style="color: #FFD43B;"></i>';
-            }
-            return stars;
-        }
-
-        function getProductIdFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('id');
-        }
-
-        function fetchProductDetails(id) {
-            const product = Object.values(products).find(product => product.id === id);
-            console.log(product);
-            if (product) {
-                document.getElementById('product-title').textContent = product.title;
-                document.getElementById('product-price').textContent = `$ ${product.price}`;
-                document.getElementById('product-description').textContent = product.description;
-                document.getElementById('mainImg').src = product.image;
-                const smallImgGroup = document.querySelector('.small-img-group');
-                smallImgGroup.innerHTML = '';
-                const smallImages = [product.image, product.image.replace('f1', 'f2'), product.image.replace('f1', 'f3'), product.image.replace('f1', 'f4')];
-                smallImages.forEach((imgSrc, index) => {
-                    const smallImg = document.createElement('div');
-                    smallImg.className = 'small-img-col';
-                    smallImg.innerHTML = `<img src="${imgSrc}" width="100%" class="small-img" alt="">`;
-                    smallImgGroup.appendChild(smallImg);
-                });
-            } else {
-                console.error('Product not found');
-            }
-        }
-
-        function getCartItemCount() {
-            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-            return cartItems.length;
-        }
-
-        function updateCartCount() {
-            const cartCount = getCartItemCount();
-            document.getElementById('cart-count').textContent = cartCount;
-            document.getElementById('mobile-cart-count').textContent = cartCount;
-        }
-
-        window.onload = function() {
-            updateCartCount();
-        };
-
-        document.getElementById('buy-btn').addEventListener('click', function() {
-            window.location.href = 'payment.html';
-        });
-    </script>
+   
     <script type="module" src="../js/script.js" defer></script>
+    <script type="module" src="../js/sproduct.js" defer></script>
+    <script type="module" src="../js/cart.js" defer></script>
+     <script type="module">
+function updateCartCount() {
+const cartCount = getCartItemCount();
+document.getElementById('cart-count').textContent = cartCount;
+document.getElementById('mobile-cart-count').textContent = cartCount;
+}
+function getQueryParam(param) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+function getCartItemCount() {
+const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+return cartItems.length;
+}
+
+window.onload = function() {
+    var category = getQueryParam('category');
+    if (category) {
+        console.log('Category:', category);
+    }
+    updateCartCount();
+};
+     </script>
+
 </body>
 </html>
