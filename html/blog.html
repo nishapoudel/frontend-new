@@ -228,7 +228,9 @@
 
     <script src="../js/script.js" defer></script>
     <script type="module">
+        // Load the count of the items in cart when oage loads
       function getCartItemCount() {
+        // Get cart items from localStorage or initialize as an empty array
         const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
         return cartItems.length;
       }
@@ -240,27 +242,36 @@
       }
 
       window.onload = function () {
+        // Update cart count when the window loads
         updateCartCount();
       };
-      //read more
+      // Read more button functionality
       document.addEventListener("DOMContentLoaded", () => {
+         // Select all elements with id starting with "read
         const readMoreButtons = document.querySelectorAll('[id^="read"]');
         const readLessButtons = document.querySelectorAll('[id^="less"]');
 
         readMoreButtons.forEach((button) => {
           button.addEventListener("click", () => {
             const id = button.id.replace("read", "");
+            // Show the hidden content
             document.getElementById("span-id" + id).classList.remove("hide");
+            // Hide the read more button
             button.classList.add("hide");
+            // Show the read less button
             document.getElementById("less" + id).classList.remove("hide");
           });
         });
 
+        // For read less button functionality
         readLessButtons.forEach((button) => {
           button.addEventListener("click", () => {
             const id = button.id.replace("less", "");
+            // Hide the content
             document.getElementById("span-id" + id).classList.add("hide");
+            // Hide the read less button
             button.classList.add("hide");
+            // Show the read more button
             document.getElementById("read" + id).classList.remove("hide");
           });
         });

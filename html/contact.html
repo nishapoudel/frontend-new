@@ -208,20 +208,24 @@
 
     <script src="../js/script.js" defer></script>
     <script type="module">
-      function getCartItemCount() {
-        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-        return cartItems.length;
-      }
-
-      function updateCartCount() {
-        const cartCount = getCartItemCount();
-        document.getElementById("cart-count").textContent = cartCount;
-        document.getElementById("mobile-cart-count").textContent = cartCount;
-      }
-
-      window.onload = function () {
-        updateCartCount();
-      };
+        // Retrieve the count of items in the cart from localStorage
+        function getCartItemCount() {
+            const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+            return cartItems.length; // Return the number of items in the cart
+        }
+    
+        // Update the cart item count in the HTML
+        function updateCartCount() {
+            const cartCount = getCartItemCount(); // Get the current cart item count
+            document.getElementById("cart-count").textContent = cartCount; // Update desktop cart count
+            document.getElementById("mobile-cart-count").textContent = cartCount; // Update mobile cart count
+        }
+    
+        // Update cart count when the window loads
+        window.onload = function () {
+            updateCartCount();
+        };
     </script>
+    
   </body>
 </html>

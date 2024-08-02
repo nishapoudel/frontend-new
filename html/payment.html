@@ -102,6 +102,7 @@
 
     <script src="../js/script.js" defer></script>
     <script type="module">
+    // Update the count of the number of items in cart when the page loads
       function getCartItemCount() {
         const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
         return cartItems.length;

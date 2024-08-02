@@ -142,141 +142,138 @@
       <script type="module">
         import { products, categories } from "../js/api.js";
         import { new_books } from "../js/api.js";
-
+    
         document.addEventListener("DOMContentLoaded", () => {
-          populateProducts();
-          populateNew();
+            populateProducts(); // Populate products on page load
+            populateNew(); // Populate new books on page load
         });
-
+    
         function populateProducts() {
-          const container = document.getElementById("pro-container");
-
-          for (const key in products) {
-            if (products.hasOwnProperty(key)) {
-              const product = products[key];
-
-              const productElement = document.createElement("div");
-              productElement.classList.add("pro");
-              productElement.id = key;
-
-              productElement.innerHTML = `
-                            <a href="sproduct.html?id=${key}">
-                                <img src="${product.image}" alt="${
-                product.title
-              }">
-                                <div class="des">
-                                    <span>${product.brand}</span>
-                                    <h5>${product.title}</h5>
-                                    <div class="star">${generateStars(
-                                      product.stars
-                                    )}</div>
-                                    <h4>${product.price}</h4>
-                                </div>
-                                <i class="fa-solid fa-cart-shopping cart"></i>
-                            </a>
-                        `;
-
-              container.appendChild(productElement);
+            const container = document.getElementById("pro-container");
+    
+            for (const key in products) {
+                if (products.hasOwnProperty(key)) {
+                    const product = products[key];
+    
+                    const productElement = document.createElement("div");
+                    productElement.classList.add("pro");
+                    productElement.id = key;
+    
+                    // Create product HTML structure
+                    productElement.innerHTML = `
+                        <a href="sproduct.html?id=${key}">
+                            <img src="${product.image}" alt="${product.title}">
+                            <div class="des">
+                                <span>${product.brand}</span>
+                                <h5>${product.title}</h5>
+                                <div class="star">${generateStars(product.stars)}</div>
+                                <h4>${product.price}</h4>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping cart"></i>
+                        </a>
+                    `;
+                    // Append product to container
+                    container.appendChild(productElement); 
+                }
             }
-          }
         }
+    
         function populateNew() {
-          const container = document.getElementById("pro-new");
-
-          for (const key in new_books) {
-            if (new_books.hasOwnProperty(key)) {
-              const product = new_books[key];
-
-              const productElement = document.createElement("div");
-              productElement.classList.add("pro");
-              productElement.id = key;
-              console.log("pp", product);
-              productElement.innerHTML = `
-                            <a href="sproduct.html?id=${key}">
-                                <img src="${product.image}" alt="${
-                product.title
-              }">
-                                <div class="des">
-                                    <span>${product.brand}</span>
-                                    <h5>${product.title}</h5>
-                                    <div class="star">${generateStars(
-                                      product.stars
-                                    )}</div>
-                                    <h4>${product.price}</h4>
-                                </div>
-                                <i class="fa-solid fa-cart-shopping cart"></i>
-                            </a>
-                        `;
-
-              container.appendChild(productElement);
+            const container = document.getElementById("pro-new");
+    
+            for (const key in new_books) {
+                if (new_books.hasOwnProperty(key)) {
+                    const product = new_books[key];
+    
+                    const productElement = document.createElement("div");
+                    productElement.classList.add("pro");
+                    productElement.id = key;
+    
+                    // Create new book HTML structure
+                    productElement.innerHTML = `
+                        <a href="sproduct.html?id=${key}">
+                            <img src="${product.image}" alt="${product.title}">
+                            <div class="des">
+                                <span>${product.brand}</span>
+                                <h5>${product.title}</h5>
+                                <div class="star">${generateStars(product.stars)}</div>
+                                <h4>${product.price}</h4>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping cart"></i>
+                        </a>
+                    `;
+                    // Append new book to container
+                    container.appendChild(productElement); 
+                }
             }
-          }
         }
-
+    
         function generateStars(starCount) {
-          let stars = "";
-          for (let i = 0; i < starCount; i++) {
-            stars += '<i class="fa-solid fa-star" style="color: #FFD43B;"></i>';
-          }
-          return stars;
+            let stars = "";
+            for (let i = 0; i < starCount; i++) {
+                stars += '<i class="fa-solid fa-star" style="color: #FFD43B;"></i>'; // Generate star icons
+            }
+            return stars;
         }
-
+    
         const featureSection = document.getElementById("feature");
-
-        // inserting category
+    
+        // Insert categories into the feature section
         categories.forEach((category) => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.dataset.category = category.name.toLowerCase();
-
-          const img = document.createElement("img");
-          img.src = category.imgSrc;
-          img.alt = category.name;
-
-          const h6 = document.createElement("h6");
-          h6.textContent = category.name;
-
-          card.appendChild(img);
-          card.appendChild(h6);
-
-          featureSection.appendChild(card);
+            const card = document.createElement("div");
+            card.className = "card";
+            card.dataset.category = category.name.toLowerCase();
+    
+            const img = document.createElement("img");
+            img.src = category.imgSrc;
+            img.alt = category.name;
+    
+            const h6 = document.createElement("h6");
+            h6.textContent = category.name;
+    
+            card.appendChild(img);
+            card.appendChild(h6);
+            // Append category card to feature section
+            featureSection.appendChild(card); 
         });
-
+    
+        // Add click event to category cards
         document.querySelectorAll(".card").forEach(function (card) {
-          card.addEventListener("click", function () {
-            var category = this.getAttribute("data-category");
-            window.location.href = "category.html?category=" + category;
-          });
+            card.addEventListener("click", function () {
+                var category = this.getAttribute("data-category");
+                window.location.href = "category.html?category=" + category; // Navigate to category page
+            });
         });
-
+    
         function getQueryParam(param) {
-          var urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(param);
+            var urlParams = new URLSearchParams(window.location.search);
+            // Retrieve URL query parameter
+            return urlParams.get(param); 
         }
-
+    
         window.onload = function () {
-          var category = getQueryParam("category");
-          if (category) {
-            console.log("Category:", category);
-          }
+            var category = getQueryParam("category");
+            if (category) {
+                 // Log the category if it exists in the URL
+                console.log("Category:", category);
+            }
+            updateCartCount(); // Update cart count on window load
         };
-
-        //to count cart items
+    
+        // Retrieve the count of items in the cart
         function getCartItemCount() {
-          const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-          return cartItems.length;
+            const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+            return cartItems.length; // Return the number of items in the cart
         }
-
+    
+        // Update the cart item count in the HTML
         function updateCartCount() {
-          const cartCount = getCartItemCount();
-          document.getElementById("cart-count").textContent = cartCount;
-          document.getElementById("mobile-cart-count").textContent = cartCount;
+            const cartCount = getCartItemCount();
+            document.getElementById("cart-count").textContent = cartCount; // Update desktop cart count
+            document.getElementById("mobile-cart-count").textContent = cartCount; // Update mobile cart count
         }
-
-        window.onload = function () {
-          updateCartCount();
-        };
-      </script>
+    </script>
+    
     </body>
   </html>
 </html>

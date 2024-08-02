@@ -170,6 +170,7 @@
         return stars;
       }
 
+    // Load the count of the items in the cart when the page loads
       function getCartItemCount() {
         const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
         return cartItems.length;
@@ -184,6 +185,7 @@
       window.onload = function () {
         updateCartCount();
 
+    
         const category = getQueryParam("category");
         if (category) {
           const h2Element = document.querySelector("h2");

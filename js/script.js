@@ -214,7 +214,6 @@ read5.addEventListener("click",()=>{
 
 
    // cart /// 
-
   
 function subtotal(){
     
@@ -386,7 +385,7 @@ if (totalBtn) {
 }
 
 
-//populate product to featured item and new arrival
+// populate product to featured item and new arrival
 
 document.addEventListener('DOMContentLoaded', () => {
     populateProducts();
