@@ -304,7 +304,6 @@ h6 {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
      flex-wrap: wrap;
      gap: 30px;
   }
@@ -864,6 +863,7 @@ footer .col i:hover, footer a:hover{
 }
 
 #about-head img{
+  height: 600px;
   width: 45%;
   margin-right: 30px;
 }
@@ -1170,11 +1170,22 @@ footer .col i:hover, footer a:hover{
    border: none;
    background-color:#088178;
    color: white;
-   width: 86px;
+   width: 120px;
    height: 35px;
    padding: 10px 20px;
    margin-right: 200px;
 }
+#update-cart-btn{
+  float: right;
+   border: none;
+   background-color:#088178;
+   color: white;
+   width: 120px;
+   height: 35px;
+   padding: 10px 20px;
+   margin-right: 200px;
+}
+
 
 #total-btn:hover{
   cursor: pointer;

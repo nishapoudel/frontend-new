@@ -1,4 +1,4 @@
-import { products, categoryBooks } from '../js/api.js';
+import { products, categoryBooks,new_books } from '../js/api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const productId = getProductIdFromUrl();
@@ -13,12 +13,12 @@ function getProductIdFromUrl() {
 function fetchProductDetails(id) {
     let product = null;
 
-    // Iterate through the products object
+    // Check in the products object
     if (products[id]) {
         product = products[id];
     }
 
-    // If product is not found in products, search in categoryBooks
+    // Check in categoryBooks if not found in products
     if (!product) {
         Object.keys(categoryBooks).forEach(category => {
             const foundProduct = categoryBooks[category].find(product => product.id === id);
@@ -28,7 +28,12 @@ function fetchProductDetails(id) {
         });
     }
 
-    // If product is found, display its details
+    // Check in new_books if not found in products and categoryBooks
+    if (!product && new_books[id]) {
+        product = new_books[id];
+    }
+
+    // Display product details if found
     if (product) {
         console.log(product);
         document.getElementById('product-title').textContent = product.title;

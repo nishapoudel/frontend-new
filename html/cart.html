@@ -55,6 +55,10 @@
          </table>
       </section>
       <button id="total-btn" >Total Bill</button>
+
+
+
+
       <section id="total" class="section-p1">
          <div class="coupon">
             <h2>Apply Coupon</h2>
@@ -64,6 +68,7 @@
             <h2 class="hide" id="invalid" >Invalid Coupon</h2>
          </div>
          <div   id="insert">
+
          </div>
       </section>
       <footer class="section-p1">
@@ -115,91 +120,6 @@
          </div>
       </footer>
       <script type="module" src="../js/script.js"     ></script>
-      <script>
-         //getting item from local storage
-         document.addEventListener('DOMContentLoaded', () => {
-             populateCart();
-         });
-         
-         function populateCart() {
-             const cartItemsContainer = document.getElementById('cart-items');
-             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-             console.log(cart);
-             cartItemsContainer.innerHTML = ''; // Clear any existing items
-         
-             cart.forEach(item => {
-                 const row = document.createElement('tr');
-                 row.id = item.id;
-         
-                 row.innerHTML = `
-                     <td><i class="fa-solid fa-trash remove-btn" data-id="${item.id}"></i></td>
-                     <td><img src="${item.image}" alt="${item.title}"></td>
-                     <td>${item.title}</td>
-                     <td>${item.price}</td>
-                     <td><input type="number" min="1" value="${item.quantity}" data-id="${item.id}"></td>
-                 `;
-         
-                 cartItemsContainer.appendChild(row);
-             });
-         
-             addEventListeners(); // Add event listeners for remove and quantity changes
-         }
-         
-         function addEventListeners() {
-             document.querySelectorAll('.remove-btn').forEach(btn => {
-                 btn.addEventListener('click', (e) => {
-                     const productId = e.target.dataset.id;
-                     removeFromCart(productId);
-                 });
-             });
-         
-             document.querySelectorAll('input[type="number"]').forEach(input => {
-                 input.addEventListener('change', (e) => {
-                     const productId = e.target.dataset.id;
-                     const newQuantity = parseInt(e.target.value, 10);
-                     updateCartQuantity(productId, newQuantity);
-                 });
-             });
-         }
-         
-         function removeFromCart(productId) {
-             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-             cart = cart.filter(item => item.id !== productId);
-             localStorage.setItem('cart', JSON.stringify(cart));
-             populateCart(); // Refresh the cart display
-         }
-         
-         function updateCartQuantity(productId, newQuantity) {
-             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-             cart = cart.map(item => {
-                 if (item.id === productId) {
-                     item.quantity = newQuantity;
-                 }
-                 return item;
-             });
-             localStorage.setItem('cart', JSON.stringify(cart));
-         }
-         
-         function getCartItemCount() {
-         
-         const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-         return cartItems.length;
-         
-         }
-         
-         
-         function updateCartCount() {
-         const cartCount = getCartItemCount();
-         document.getElementById('cart-count').textContent = cartCount;
-         document.getElementById('mobile-cart-count').textContent = cartCount;
-         
-         
-         }
-         
-         window.onload = function() {
-         updateCartCount();
-         };
-         
-      </script>
+     
    </body>
 </html>

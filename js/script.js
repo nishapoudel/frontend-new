@@ -19,6 +19,8 @@ const third = document.getElementById("third");
 const btn= document.getElementById("btn"); 
 const couponIn = document.getElementById("coupon"); 
 const totalBtn = document.getElementById("total-btn");
+const updateBtn = document.getElementById("update-cart-btn");
+
 const invalid =document.getElementById("invalid");
 const insert = document.getElementById("insert");
 const num1 = document.getElementById("num1");
@@ -430,7 +432,6 @@ function populateNew() {
             const productElement = document.createElement('div');
             productElement.classList.add('pro');
             productElement.id = key;
-console.log("pp",product)
             productElement.innerHTML = `
                 <a href="sproduct.html?id=${key}">
                     <img src="${product.image}" alt="${product.title}">
