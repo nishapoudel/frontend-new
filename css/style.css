@@ -9,6 +9,13 @@
  html{
     scroll-behavior: smooth;
  }
+  .logo {
+   
+    height: 60px; 
+    border-radius: 50%; /* Optional: Rounded corners */
+
+
+ }
 
 h1 {
     font-size: 50px;

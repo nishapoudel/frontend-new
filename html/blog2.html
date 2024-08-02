@@ -42,7 +42,7 @@
 
     <section id="hero2" >
         <h2>#readmore</h2>
-        <p>Read all case studies about our products!</p>
+        <p>Read all case studies about our books!</p>
     </section>   
 
  <section id="blog">
@@ -52,13 +52,12 @@
             <h2>18/06</h2>
             <img src="../img/blog/b5.jpg" alt="">
          </div>    
-         <div id="blog-detailId" class="blog-details">
-            <h4>AW20 Menswear-Trends</h4>
-            <p>Explore the defining AW20 menswear trends that will elevate your wardrobe this season. From luxurious fabrics and rich color palettes to bold patterns and oversized silhouettes <span id="span-id5" class="hide">our blog breaks down the key pieces and styling tips you need. Whether you're updating your office attire or looking for standout casual wear, stay ahead with our comprehensive guide to the latest in men's fashion.  </span>  </p>
-
+         <div id="blog-detailId5" class="blog-details">
+            <h4>"Mysteries of the Ancient World"</h4>
+            <p>Delve into the enigmatic past with "Mysteries of the Ancient World," a captivating book that unveils the secrets of lost civilizations and unexplained phenomena. This meticulously researched work takes readers on a journey through time, exploring ancient wonders and hidden histories. <span id="span-id5" class="hide">From the pyramids of Egypt to the ruins of Machu Picchu, "Mysteries of the Ancient World" offers a comprehensive look at the mysteries that have puzzled historians and archaeologists for centuries. Ideal for history buffs and curious minds, this book provides a fascinating glimpse into the past and encourages readers to uncover the truths behind these ancient enigmas.</span>  </p>
+    
             <h6 id="read5"> CONTINUE READING.... </h6>  
             <h6 class="hide" id="less5">READ LESS </h6>   
-            
          </div>
     </div>
 
@@ -83,7 +82,7 @@
 
     <footer class="section-p1">
         <div class="col col1">
-            <img src="../img/logo.png" alt="">
+            <img height="300px" src="../img/logo.png" alt="">
             <h4>Contact</h4>
             <p> <strong>Address:</strong> 142, Hardoi-Kanpur Road, Mallawan, IN </p>
             <p> <strong>Phone:</strong> +91-8081399512 </p>
@@ -160,6 +159,29 @@ function updateCartCount() {
 window.onload = function() {
     updateCartCount();
 };
+//read more
+document.addEventListener('DOMContentLoaded', () => {
+    const readMoreButtons = document.querySelectorAll('[id^="read"]');
+    const readLessButtons = document.querySelectorAll('[id^="less"]');
+
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.id.replace('read', '');
+            document.getElementById('span-id' + id).classList.remove('hide');
+            button.classList.add('hide');
+            document.getElementById('less' + id).classList.remove('hide');
+        });
+    });
+
+    readLessButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.id.replace('less', '');
+            document.getElementById('span-id' + id).classList.add('hide');
+            button.classList.add('hide');
+            document.getElementById('read' + id).classList.remove('hide');
+        });
+    });
+})
     </script>
 </body>
 

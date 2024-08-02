@@ -42,7 +42,7 @@
 
     <section id="hero2" >
         <h2>#readmore</h2>
-        <p>Read all case studies about our products!</p>
+        <p>Read all case studies about our books!</p>
     </section>   
 
  <section id="blog">
@@ -53,12 +53,11 @@
             <img src="../img/blog/b1.jpg" alt="">
          </div>    
          <div id="blog-detailId" class="blog-details">
-            <h4>The Cotton-Jersey Zip-Up Hoodies</h4>
-            <p>Looking for the perfect blend of comfort and style? Our Cotton-Jersey Zip-Up Hoodies are just what you need. Made from premium cotton-jersey fabric, these hoodies are incredibly soft, breathable, and durable. <span id="span-id1" class="hide">Ideal for layering or wearing on their own, they offer a versatile look that suits any casual occasion. Featuring a sturdy zip-up front, a spacious hood, and roomy pockets, these hoodies combine functionality with modern design.  </span>  </p>
-
+            <h4>"The Art of Storytelling"</h4>
+            <p>Dive into the world of captivating narratives with "The Art of Storytelling." This book explores the techniques and secrets behind creating compelling stories that resonate with readers. <span id="span-id1" class="hide">From character development to plot structure, discover how to weave tales that leave a lasting impact. Perfect for aspiring writers and literary enthusiasts, "The Art of Storytelling" is a treasure trove of insights from seasoned authors and storytellers. </span>  </p>
+    
             <h6 id="read1"> CONTINUE READING.... </h6>  
             <h6 class="hide" id="less1">READ LESS </h6>   
-            
          </div>
     </div>
 
@@ -68,12 +67,11 @@
             <img src="../img/blog/b2.jpg" alt=""> 
          </div>    
          <div id="blog-detailId" class="blog-details">
-            <h4>How to Style a Quiff</h4>
-            <p>Elevate your look with the timeless sophistication of a quiff. Our guide will take you through the essential steps to style this classic yet versatile hairstyle, perfect for any occasion. <span class="hide" id="span-id2"> Discover the best techniques to create volume and structure, ensuring your quiff stays sharp and stylish all day long. From selecting the right hair products to mastering the blow-dry, our detailed instructions make it easy for anyone to achieve a polished, professional finish. </span>  </p>
-
+            <h4>"Unlocking Your Creativity"</h4>
+            <p>Discover the keys to unleashing your creative potential with "Unlocking Your Creativity." This inspiring book offers practical tips and exercises to help you tap into your imagination and bring your ideas to life. <span id="span-id2" class="hide">Whether you're an artist, writer, or simply looking to add more creativity to your daily life, this book provides valuable insights and strategies to boost your creative confidence and productivity. </span>  </p>
+    
             <h6 id="read2"> CONTINUE READING.... </h6>  
-            <h6 class="hide" id="less2">READ LESS </h6>  
-            
+            <h6 class="hide" id="less2">READ LESS </h6>   
          </div>
     </div>
 
@@ -83,13 +81,12 @@
            <img src="../img/blog/b3.jpg" alt=""> 
         </div>    
         <div id="blog-detailId" class="blog-details">
-           <h4>Must-Have Skater Girl Items</h4>
-           <p>Embrace your inner skater girl with our curated list of must-have items that blend style and functionality. From the perfect pair of distressed jeans to a collection of graphic tees <span id="span-id3" class="hide">, we've got everything you need to nail that effortlessly cool look. Discover the best skate shoes that offer both comfort and grip, and explore accessories like snapback hats, beanies, and backpacks that complete your aesthetic.  </span>  </p>
-
-           <h6 id="read3"> CONTINUE READING.... </h6>  
-           <h6 class="hide" id="less3">READ LESS </h6>  
-           
-        </div>
+            <h4>"Mastering Mindfulness"</h4>
+            <p>Embark on a journey to inner peace with "Mastering Mindfulness." This book guides you through the principles and practices of mindfulness, helping you cultivate a more balanced and serene life. <span id="span-id3" class="hide">With practical exercises and meditative techniques, you'll learn how to stay present, reduce stress, and enhance your overall well-being. "Mastering Mindfulness" is an essential read for anyone seeking to improve their mental and emotional health. </span>  </p>
+    
+            <h6 id="read3"> CONTINUE READING.... </h6>  
+            <h6 class="hide" id="less3">READ LESS </h6>   
+         </div>
    </div>
     <div class="blog-box section-p1"> 
         <div class="blog-img">
@@ -97,13 +94,12 @@
            <img src="../img/blog/b4.jpg" alt=""> 
         </div>    
         <div id="blog-detailId" class="blog-details">
-           <h4>Runway-Inspired Trends</h4>
-           <p>Stay ahead of the fashion curve with our latest blog on runway-inspired trends. Discover how to translate high-fashion looks into everyday style with our expert tips<span id="span-id4" class="hide">and curated picks. From bold patterns to statement accessories, we break down the must-have trends straight from the catwalk. </span>  </p>
-
-           <h6 id="read4"> CONTINUE READING.... </h6>  
-           <h6 class="hide" id="less4">READ LESS </h6>  
-           
-        </div>
+            <h4>"Journey to the Heart"</h4>
+            <p>Embark on an emotional adventure with "Journey to the Heart," a novel that explores the depths of love, loss, and healing. This compelling story follows the protagonist's quest for inner peace and fulfillment. <span id="span-id4" class="hide">Through vivid storytelling and richly drawn characters, "Journey to the Heart" offers readers a heartfelt exploration of the human condition and the transformative power of self-discovery. Perfect for fans of contemporary fiction and emotional narratives, this book is a poignant reminder of the resilience of the human spirit. </span>  </p>
+    
+            <h6 id="read4"> CONTINUE READING.... </h6>  
+            <h6 class="hide" id="less4">READ LESS </h6>   
+         </div>
    </div>
 
  </section>
@@ -127,7 +123,7 @@
 
     <footer class="section-p1">
         <div class="col col1">
-            <img src="../img/logo.png" alt="">
+            <img height="300px" src="../img/logo.png" alt="">
             <h4>Contact</h4>
             <p> <strong>Address:</strong> 142, Hardoi-Kanpur Road, Mallawan, IN </p>
             <p> <strong>Phone:</strong> +91-8081399512 </p>
@@ -204,6 +200,29 @@ function updateCartCount() {
 window.onload = function() {
     updateCartCount();
 };
+//read more 
+document.addEventListener('DOMContentLoaded', () => {
+    const readMoreButtons = document.querySelectorAll('[id^="read"]');
+    const readLessButtons = document.querySelectorAll('[id^="less"]');
+
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.id.replace('read', '');
+            document.getElementById('span-id' + id).classList.remove('hide');
+            button.classList.add('hide');
+            document.getElementById('less' + id).classList.remove('hide');
+        });
+    });
+
+    readLessButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.id.replace('less', '');
+            document.getElementById('span-id' + id).classList.add('hide');
+            button.classList.add('hide');
+            document.getElementById('read' + id).classList.remove('hide');
+        });
+    });
+});
     </script>
 </body>
 
