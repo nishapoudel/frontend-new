@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/signup.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <ul>
+                <li><img src="../img/logo.png" class="logo"></li>
+                <li><a href="#" class="name">Bookmandu</a></li>
+                <div class="right-nav">
+                    <li><a href="signin.html" class="left-">Already have an account? Sign In</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="login">
+                <form id="signup" onsubmit="validateForm(event)">
+                    <h2 style="margin-bottom:15px;">Sign UP</h2>
+                    <div class="f1">
+                        <div class="box">
+                            <input type="text" placeholder="Enter firstname" name="fname" id="fname" required>
+                            <span class="error" id="errorfname"></span>
+                        </div>
+                        <div class="box boxlname">
+                            <input type="text" placeholder="Enter lastname" name="lname" id="lname" required>
+                            <span class="error" id="errorlname"></span>
+                        </div>
+                    </div>
+                    <div class="boxs">
+                        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                        <span class="error" id="erroremail"></span>
+                    </div>
+                    <div class="boxs">
+                        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                        <span class="error" id="errorpw"></span>
+                    </div>
+                    <input type="submit" name="log" id="log" value="Sign up to Bookmandu">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('psw').value;
+
+            const user = {
+                fname: fname,
+                lname: lname,
+                email: email,
+                password: password
+            };
+
+            localStorage.setItem(email, JSON.stringify(user));
+            alert('Sign Up successful! You can now sign in.');
+            window.location.href = 'signin.html';
+        }
+    </script>
+</body>
+</html>

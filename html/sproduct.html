@@ -12,32 +12,8 @@
     <link rel="shortcut icon" href="../img/logo.png" type="image/png" />
   </head>
   <body>
-    <section id="header">
-      <a href="#"><img src="../img/logo.png" class="logo" alt="logo" /> </a>
-      <div>
-        <ul id="navbar">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li id="shop"><a href="shop.html">Shop</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li id="lg-bag">
-            <a href="cart.html">
-              <i class="fa-solid fa-bag-shopping"></i>
-              <span id="cart-count" class="cart-count">0</span>
-            </a>
-          </li>
-          <a href="#" id="close"> <i class="fa-solid fa-xmark"></i> </a>
-        </ul>
-      </div>
-      <div id="mobile">
-        <a href="cart.html">
-          <i class="fa-solid fa-bag-shopping"></i>
-          <span id="mobile-cart-count" class="cart-count">0</span>
-        </a>
-        <i id="bar" class="fa-solid fa-bars"></i>
-      </div>
-    </section>
+    <!-- Placeholder for Navbar -->
+    <div id="navbar-placeholder"></div>
     <section id="prodeatils" class="section-p1">
       <div id="img" class="single-pro-image">
         <img src="" width="100%" id="mainImg" alt="" height="600px" />
@@ -157,37 +133,37 @@
         // Update the cart item count in the HTML
         function updateCartCount() {
             // Get the current cart item count
-            const cartCount = getCartItemCount(); 
+            const cartCount = getCartItemCount();
             // Update desktop cart count
-            document.getElementById("cart-count").textContent = cartCount; 
+            document.getElementById("cart-count").textContent = cartCount;
              // Update mobile cart count
             document.getElementById("mobile-cart-count").textContent = cartCount;
         }
-    
+
         // Retrieve URL query parameter
         function getQueryParam(param) {
-            var urlParams = new URLSearchParams(window.location.search); 
+            var urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param); // Get the value of the specified parameter
         }
-    
+
         // Retrieve the count of items in the cart from localStorage
         function getCartItemCount() {
             // Parse cart items or initialize as an empty array if none are found
-            const cartItems = JSON.parse(localStorage.getItem("cart")) || []; 
+            const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
             return cartItems.length; // Return the number of items in the cart
         }
-    
+
         // Execute functions when the window loads
         window.onload = function () {
             // Get the category parameter from the URL
-            var category = getQueryParam("category"); 
+            var category = getQueryParam("category");
             if (category) {
                 // Log the category if it exists in the URL
-                console.log("Category:", category); 
+                console.log("Category:", category);
             }
             updateCartCount(); // Update cart count on window load
         };
     </script>
-    
+
   </body>
 </html>

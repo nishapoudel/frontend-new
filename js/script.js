@@ -15,9 +15,17 @@ const thirdBtn = document.getElementById("thirdBtn");
 const third = document.getElementById("third");
 
 
+ // JavaScript code to load navbar.html into the placeholder
+ document.addEventListener("DOMContentLoaded", function() {
+    fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+});
 //cart
-const btn= document.getElementById("btn"); 
-const couponIn = document.getElementById("coupon"); 
+const btn= document.getElementById("btn");
+const couponIn = document.getElementById("coupon");
 const totalBtn = document.getElementById("total-btn");
 const updateBtn = document.getElementById("update-cart-btn");
 
@@ -38,20 +46,20 @@ const num3 = document.getElementById("num3");
 
  const images = ["img/banner1.jpg", "img/banner2.jpg"];
  let currentIndex = 0;
- 
+
  function changeBackgroundImage() {
      const heroSection = document.getElementById('hero');
      const firstHero = document.getElementById('first_hero');
      const secHero = document.getElementById('sec_hero');
- 
+
      // Ensure heroSection and elements are defined
      if (!heroSection || !firstHero || !secHero) {
          console.error('Hero section or required elements are missing.');
          return;
      }
- 
+
      heroSection.style.backgroundImage = `url(${images[currentIndex]})`;
- 
+
      // Use numeric values for comparison
      if (currentIndex === 0) {
          heroSection.style.backgroundPosition = 'top 25% right 0';
@@ -62,16 +70,16 @@ const num3 = document.getElementById("num3");
          secHero.classList.remove('hide');
          firstHero.classList.add('hide');
      }
- 
+
      currentIndex = (currentIndex + 1) % images.length;
- 
+
      heroSection.classList.remove('slide');
      void heroSection.offsetWidth; // Trigger reflow
      heroSection.classList.add('slide');
  }
- 
+
  setInterval(changeBackgroundImage, 2500);
- 
+
 
 
 
@@ -100,12 +108,12 @@ if(bar){
 
 close.addEventListener("click", (e)=>{
     nav.classList.remove('active');
-     e.preventDefault();  
-}) 
+     e.preventDefault();
+})
 
 const select_size = document.getElementById("select-size");
 
-// buy btn 
+// buy btn
 
 if(buy_btn)
  {
@@ -114,7 +122,7 @@ if(buy_btn)
         if(select_option.value=='Select Size')
             select_size.classList.remove('hide');
           else{
-            //   window.location.href=`payment.html`; 
+            //   window.location.href=`payment.html`;
             select_size.classList.add('hide');
               window.open('payment.html', '_blank');
           }
@@ -147,7 +155,7 @@ if(smallImg.length > 0 && mainImg) {
 
 if(read1)
 read1.addEventListener("click",()=>{
-      span1.classList.remove("hide"); 
+      span1.classList.remove("hide");
       read1.classList.add('hide');
       less1.classList.remove("hide");
 
@@ -158,7 +166,7 @@ read1.addEventListener("click",()=>{
 
       })
    })
-   
+
 if(read2)
 read2.addEventListener("click",()=>{
       span2.classList.remove("hide");
@@ -213,30 +221,30 @@ read5.addEventListener("click",()=>{
    })
 
 
-   // cart /// 
-  
+   // cart ///
+
 function subtotal(){
-    
+
     if(firstBtn)
         firstBtn.addEventListener("click", ()=>{
-       let a= confirm("You really want to remove ?") 
+       let a= confirm("You really want to remove ?")
         if(a)
            first.classList.add("hide");
           num1.value=0;
-           
+
         })
-        if(secBtn)   
+        if(secBtn)
             secBtn.addEventListener("click", ()=>{
-                let a= confirm("You really want to remove ?") 
+                let a= confirm("You really want to remove ?")
                 if(a)
             sec.classList.add("hide");
         num2.value=0;
             })
-        if(thirdBtn)   
+        if(thirdBtn)
             thirdBtn.addEventListener("click", ()=>{
-                let a= confirm("You really want to remove ?") 
+                let a= confirm("You really want to remove ?")
                 if(a)
-                third.classList.add("hide"); 
+                third.classList.add("hide");
               num3.value=0;
             })
 
@@ -251,19 +259,19 @@ if(btn) {
 btn.addEventListener("click" , ()=>{
  const coup = couponIn.value.trim();
 if(coup==""){
-    enter_coupon.classList.remove('hide'); 
+    enter_coupon.classList.remove('hide');
     invalid.classList.add('hide');
     console.log("hit coupon")
-    // alert(" Please Enter Coupon first!"); 
+    // alert(" Please Enter Coupon first!");
 }
 
 else{
-invalid.classList.remove('hide'); 
+invalid.classList.remove('hide');
 enter_coupon.classList.add('hide');
- couponIn.value=""; 
+ couponIn.value="";
 }
-});  
-} 
+});
+}
 
 
 //populate item from local storage to cart
@@ -294,7 +302,7 @@ function populateCart() {
         cartItemsContainer.appendChild(row);
     });
 
-    addEventListeners(); 
+    addEventListeners();
 }
 
 function addEventListeners() {
@@ -344,7 +352,7 @@ function calculateTotal() {
         totalQuantity += item.quantity;
         totalAmount += itemPrice * item.quantity;
     });
-     
+
     const insert = document.getElementById('insert');
     insert.classList.add("cart-total")
     console.log(insert)
@@ -356,7 +364,7 @@ function calculateTotal() {
                 <tr>
                     <td>Quantity</td>
                     <td>${totalQuantity}</td>
-                </tr> 
+                </tr>
                 <tr>
                     <td>Amount</td>
                     <td>$${totalAmount.toFixed(2)}</td>
@@ -374,7 +382,7 @@ function calculateTotal() {
                 <button id="Proceed">Proceed to Pay</button>
             </a>
             <br><br><br>
-            <span id="redId" class="hide" style="color: red;">Add some items before proceeding</span>  
+            <span id="redId" class="hide" style="color: red;">Add some items before proceeding</span>
         </div>`;
 }
 
@@ -459,7 +467,7 @@ function generateStars(starCount) {
 
 const featureSection = document.getElementById('feature');
 
-// inserting category 
+// inserting category
 categories.forEach(category => {
 const card = document.createElement('div');
 card.className = 'card';
